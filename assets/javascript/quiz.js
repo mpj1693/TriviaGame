@@ -60,7 +60,7 @@ $(document).ready(function () {
             question: "When do we celebrate Independence Day?",
             choices: ["July 4", "January 1", "March 4", "June 30"],
             answer: 0,
-            photo: "assets/images/image6.jpg"
+            photo: "assets/images/image6.gif"
         },
         {
             question: "What territory did the United States buy from France in 1803?",
@@ -98,9 +98,9 @@ $(document).ready(function () {
         $("#start").hide();
         displayQuestion();
         runTimer();
-        for (var i = 0; i < questions.length; i++) {
-          var holder = holder.push(questions[i]);
-        }
+        // for (var i = 0; i < questions.length; i++) {
+        //   var holder = holder.push(questions[i]);
+        // }
     });
 
     // creating a funtion to decrease time every second
@@ -119,7 +119,7 @@ $(document).ready(function () {
             unansweredCount++;
             stop();
             $("#answerblock").html(
-                "<p>Time's up! The correct answer is: " +pick.choices[pick.answer] +"</p>"
+                "<h3>Time's up! The correct answer is: " +pick.choices[pick.answer] +"</h3>"
             );
             displayImage();
         }
@@ -138,7 +138,7 @@ $(document).ready(function () {
         $("#questionblock").html("<h2>" + pick.question + "</h2>");
         for (var i = 0; i < pick.choices.length; i++) {
             var userChoice = $("<div>");
-            userChoice.addClass("answerchoice");
+            userChoice.addClass("answerchoice h4 btn btn-outline-light btn-block btn-lg font-weight-bold");
             userChoice.html(pick.choices[i]);
             userChoice.attr("data-guessvalue", i);
             $("#answerblock").append(userChoice);
@@ -152,17 +152,13 @@ $(document).ready(function () {
                 stop();
                 correctCount++;
                 userPick = "";
-                $("#answerblock").html("<p>Correct!</p>");
+                $("#answerblock").html("<h2>That's Correct!</h2>" + pick.answer);
                 displayImage();
             } else {
                 stop();
                 incorrectCount++;
                 userPick = "";
-                $("#answerblock").html(
-                    "<p>Wrong! The correct answer is: " +
-                    pick.choices[pick.answer] +
-                    "</p>"
-                );
+                $("#answerblock").html("<h2>Wrong! The correct answer is: " +pick.choices[pick.answer] + "</h2>");
                 displayImage();
             }
         });
@@ -182,14 +178,14 @@ $(document).ready(function () {
     //this will reset the timer back to 15 after every question
             timer = 10;
 
-    // when all questions are answered or when the time's up display result page and the Try Again button 
+    // when all questions are answered or when the time's up display result and the Try Again button 
             if ((correctCount + incorrectCount + unansweredCount) === totalqCount) {
                 $("#questionblock").empty();
-                $("#questionblock").html("Game Over!  Here's how you did: ");
-                $("#answerblock").append("Correct Answers: " + correctCount);
-                $("#answerblock").append("\nIncorrect: Answers" + incorrectCount);
-                $("#answerblock").append("\nNot Attempted: " + unansweredCount);
+                $("#questionblock").html("<h2>Game Over!</h2>");
                 $("#reset").show();
+                $("#correctAnswers").append("Correct Answers:   " + correctCount);
+                $("#incorrectAnswers").append("Incorrect Answers:   " + incorrectCount);
+                $("#unAnswered").append("Not Attempted:   " + unansweredCount); 
                 correctCount = 0;
                 incorrectCount = 0;
                 unansweredCount = 0;
