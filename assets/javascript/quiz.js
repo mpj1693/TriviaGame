@@ -152,7 +152,7 @@ $(document).ready(function () {
                 stop();
                 correctCount++;
                 userPick = "";
-                $("#answerblock").html("<h2>That's Correct!</h2>" + pick.answer);
+                $("#answerblock").html("<h2>That's Correct!</h2>");
                 displayImage();
             } else {
                 stop();
@@ -175,8 +175,8 @@ $(document).ready(function () {
 
         setTimeout(function () {
             $("#answerblock").empty();
-    //this will reset the timer back to 15 after every question
-            timer = 10;
+    //this will reset the timer back to 20 after every question
+            timer = 20;
 
     // when all questions are answered or when the time's up display result and the Try Again button 
             if ((correctCount + incorrectCount + unansweredCount) === totalqCount) {
@@ -195,7 +195,7 @@ $(document).ready(function () {
                 displayQuestion();
 
             }
-        }, 4000);
+        }, 8000);
 
     }
 
