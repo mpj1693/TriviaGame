@@ -164,7 +164,7 @@ $(document).ready(function () {
         });
     }
 
-    var timer = 10;
+    var timer = 20;
     var newArray = [];
     //this will display corresponding image after user has picked the answer
     function displayImage() {
